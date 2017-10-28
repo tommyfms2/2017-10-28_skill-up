@@ -12,7 +12,7 @@ from chainer.datasets import tuple_dataset
 
 import numpy as np
 
-#
+
 def create_data(min_num, max_num, n_samples):
     # np.random.randint(1,10,size=5) -> [2,3,8,5,1]
     a_vals = np.random.randint(min_num, max_num, size=n_samples)
@@ -55,6 +55,7 @@ class MLP(chainer.Chain):
     def __init__(self, n_units, n_out):
         super(MLP, self).__init__()
         with self.init_scope():
+            # Linearは全結合層を意味する。
             self.l1 = L.Linear(None, n_units)
             self.l2 = L.Linear(None, n_units)
             self.l3 = L.Linear(None, n_out)
